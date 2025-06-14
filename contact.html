@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo"><img src="./assets/jccc.jpg" class="logo" /></div>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="challenges.html">Challenges</a></li>
+      <li><a href="future.html">Future Plans</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h1 class="title">Contact Me</h1>
+    <form name="submit-to-google-sheet">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn2">Send</button>
+    </form>
+
+    <div id="sending-message">Sending...</div>
+    <div id="success-message">Submission Successful!</div>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_ID/exec';
+      const form = document.forms['submit-to-google-sheet'];
+      const sendButton = form.querySelector('button');
+      const sendingMessage = document.getElementById('sending-message');
+      const successMessage = document.getElementById('success-message');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        sendButton.disabled = true;
+        sendingMessage.style.display = 'block';
+        successMessage.style.display = 'none';
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(() => {
+            sendingMessage.style.display = 'none';
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+              sendButton.disabled = false;
+              successMessage.style.display = 'none';
+              location.reload();
+            }, 3000);
+          })
+          .catch(error => {
+            sendingMessage.style.display = 'none';
+            alert('Error: Please try again later.');
+            sendButton.disabled = false;
+          });
+      });
+    </script>
+  </section>
+
+</body>
+</html>

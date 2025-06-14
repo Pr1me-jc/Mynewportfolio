@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo"><img src="./assets/jccc.jpg" class="logo" /></div>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="challenges.html">Challenges</a></li>
+      <li><a href="future.html">Future Plans</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h1 class="title">Projects</h1>
+    <div class="details-container color-container">
+      <div class="article-container">
+        <img src="./assets/bbbb.webp" alt="Project" class="project-img" />
+      </div>
+      <h2 class="experience-sub-title project-title">Previous Project</h2>
+      <button class="btn btn-color-2 project-btn" onclick="openModal()">Click Me</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>Recent Project</h2>
+        <img src="./assets/111.jpg" class="modal-img" />
+        <img src="./assets/333.jpg" class="modal-img" />
+        <img src="./assets/444.jpg" class="modal-img" />
+        <img src="./assets/222.jpg" class="modal-img" />
+        <img src="./assets/666.jpg" class="modal-img" />
+        <img src="./assets/555.jpg" class="modal-img" />
+        <p>My Previous Project</p>
+      </div>
+    </div>
+
+    <script>
+      function openModal() {
+        document.getElementById("projectModal").style.display = "block";
+      }
+      function closeModal() {
+        document.getElementById("projectModal").style.display = "none";
+      }
+      window.onclick = function (event) {
+        const modal = document.getElementById("projectModal");
+        if (event.target == modal) modal.style.display = "none";
+      };
+    </script>
+  </section>
+
+</body>
+</html>
